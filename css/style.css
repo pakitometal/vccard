@@ -30,6 +30,10 @@ body {
 	text-transform: none;
 }
 
+#request_form > div.controls {
+	height: 2em;;
+}
+
 #do_request {
 	padding:0.1em 0;
 	width: 100%;
