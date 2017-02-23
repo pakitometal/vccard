@@ -1,13 +1,13 @@
 window.addEventListener('load', function(){
 	var status_msg = false;
 	document.getElementById('pos').focus();
-	
+
 	function clear_status() {
 		if ( status_msg ) {
 			status_msg.parentNode.removeChild(status_msg);
 		}
 	}
-	
+
 	function show_status(status) {
 		status_msg = document.createElement('div');
 		status_msg.id = 'status_msg';
@@ -18,20 +18,21 @@ window.addEventListener('load', function(){
 			status_text = 'OK';
 		}
 		status_msg.innerHTML = '<p>'+status_text+'</p>';
-		document.body.appendChild(status_msg);	
+		document.body.appendChild(status_msg);
 	}
-	
+
 	document.getElementById('do_request').addEventListener('click', function(e){
 		e.preventDefault();
 		e.stopPropagation();
 		clear_status();
 		var current_elem = this;
 		current_elem.style.display = 'none';
+		current_elem.parentNode.classList.add('spinner');
 		var xhr = new XMLHttpRequest();
 		xhr.open(
 			'POST',
 			encodeURI('php/vccard.php')
-		);	
+		);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.onload = function() {
 			var response_status = false;
@@ -40,6 +41,7 @@ window.addEventListener('load', function(){
 				response_status = response.status;
 			}
 			current_elem.style.display = 'block';
+			current_elem.parentNode.classList.remove('spinner');
 			show_status(response_status);
 			document.getElementById('pos').value = document.getElementById('loc').value = '';
 			if ( !response_status ) {
@@ -51,4 +53,3 @@ window.addEventListener('load', function(){
 		xhr.send(encodeURI('pos=' + pos + '&loc=' + loc));
 	}, false);
 }, false);
-

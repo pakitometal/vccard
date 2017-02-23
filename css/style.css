@@ -6,9 +6,10 @@ body {
 
 #request_form {
 	width: 100%;
+	position: relative;
 }
 
-#request_form * {
+#request_form > * {
 	display: block;
 	margin: 0 auto;
 	max-width: 256px;
@@ -23,32 +24,25 @@ body {
 }
 
 #request_form input {
-	border-radius: 8px;
-	font-size: 2em;
+	font-size: 1em;
 	height: 1.5em;
 	margin-bottom: 10px;
 	text-transform: none;
 }
 
 #do_request {
-	background-color: #00a500;
-	border: 3px solid #000000;
-	border-radius: 50px;
-	color: #ffffff;
-	font-weight: bold;
-	height: 100px;
-	max-width: 100px;
+	padding:0.1em 0;
+	width: 100%;
 }
 
 #do_request:hover {
-	background-color: #00d500;
 	cursor: pointer;
 }
 
 #status_msg {
-	font-size: 1.5em;
+	font-size: 1em;
 	margin: 10px 0 0 0;
-	padding: 0.2em 0;
+	padding: 0.1em 0;
 	text-align: center;
 }
 
@@ -60,3 +54,22 @@ body {
 	background-color: #a50000;
 }
 
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spinner .6s linear infinite;
+}
