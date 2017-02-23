@@ -30,7 +30,7 @@
 	}
 
 	// Send value via email
-	$subject = 'Answer ('.date('Ymd H:i:s').')';
+	$subject = VCCARD_MSG_SUBJECT;
 	$message = $result['val'];
 	$headers_array = [
 		'From:'.VCCARD_FROM_EMAIL,
