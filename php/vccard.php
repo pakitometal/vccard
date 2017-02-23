@@ -30,14 +30,11 @@
 	}
 
 	// Send value via email
-	$dest_mail = isset( $_SERVER['VCCARD_DEST_EMAIL'] ) ? $_SERVER['VCCARD_DEST_EMAIL'] : VCCARD_DEST_EMAIL;
-	$from_mail = isset( $_SERVER['VCCARD_FROM_EMAIL'] ) ? $_SERVER['VCCARD_FROM_EMAIL'] : VCCARD_FROM_EMAIL;
-
 	$subject = 'Answer ('.date('Ymd H:i:s').')';
 	$message = $result['val'];
 	$headers_array = [
-		'From:'.$from_mail,
+		'From:'.VCCARD_FROM_EMAIL,
 		'X-Mailer:PHP/'.phpversion()
 	];
 	$headers = implode("\r\n", $headers_array);
-	response(mail($dest_mail, $subject, $message, $headers));
+	response(mail(VCCARD_DEST_EMAIL, $subject, $message, $headers));
