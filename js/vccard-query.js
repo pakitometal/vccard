@@ -31,7 +31,7 @@ window.addEventListener('load', function(){
 		var xhr = new XMLHttpRequest();
 		xhr.open(
 			'POST',
-			encodeURI('php/vccard.php')
+			encodeURI('php/vccard-query.php')
 		);
 		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 		xhr.onload = function() {

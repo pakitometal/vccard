@@ -6,33 +6,28 @@ body {
 	text-transform: uppercase;
 }
 
-#vccard_query_form {
+#vccard_create_form {
 	width: 100%;
 	position: relative;
 }
 
-#vccard_query_form > * {
-	display: block;
-	margin: 0 auto;
-	max-width: 256px;
-	padding: 0;
-	width: 80%;
+#vccard_create_form > div.card-input {
+	margin-bottom: 10px;
 }
 
-#vccard_query_form label {
-	margin-bottom: 5px;
-}
-
-#vccard_query_form input {
+#vccard_create_form > div.card-input > input {
 	font-size: 1em;
 	height: 1.5em;
-	margin-bottom: 10px;
 	text-transform: none;
+	max-width: 4em;
 	text-align: center;
 }
 
-#vccard_query_form > div.controls {
-	height: 2em;
+#vccard_create_form > div.card-input > button {
+	height: 35px;
+	width: 35px;
+	font-weight: bolder;
+	cursor: pointer;
 }
 
 #do_query {
