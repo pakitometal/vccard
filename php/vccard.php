@@ -8,13 +8,13 @@
 		die;
 	}
 
-	// Parameter validation ('pos' between 1 and 50, 'loc' not empty)
-	if ( !(isset($_POST['pos']) && false !== preg_match('#^(50|[1-4]{1}[0-9]{1}|[1-9]{1})$#', $_POST['pos']) && isset($_POST['loc']) && $_POST['loc']) ) {
+	// Parameter validation
+	if ( !(isset($_POST['pos']) && false !== preg_match('#^([a-z][0-9]{1,2})|([0-9]{1,2}[a-z]?)$#i', $_POST['pos']) && isset($_POST['passwd']) && $_POST['passwd']) ) {
 		response(false);
 	}
 
 	// Open connection with DB
-	if ( !$conn = sqlite3_open(VCCARD_DB_FILE, SQLITE3_OPEN_READONLY, $_POST['loc']) ) {
+	if ( !$conn = sqlite3_open(VCCARD_DB_FILE, SQLITE3_OPEN_READONLY, $_POST['passwd']) ) {
 		response(false);
 	}
 

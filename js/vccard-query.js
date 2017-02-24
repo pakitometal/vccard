@@ -21,7 +21,7 @@ window.addEventListener('load', function(){
 		document.body.appendChild(status_msg);
 	}
 
-	document.getElementById('do_request').addEventListener('click', function(e){
+	document.getElementById('do_query').addEventListener('click', function(e){
 		e.preventDefault();
 		e.stopPropagation();
 		clear_status();
@@ -43,13 +43,13 @@ window.addEventListener('load', function(){
 			current_elem.style.display = 'block';
 			current_elem.parentNode.classList.remove('spinner');
 			show_status(response_status);
-			document.getElementById('pos').value = document.getElementById('loc').value = '';
+			document.getElementById('pos').value = document.getElementById('passwd').value = '';
 			if ( !response_status ) {
 				document.getElementById('pos').focus();
 			}
 		};
 		var pos = 'undefined' != typeof document.getElementById('pos').value ? document.getElementById('pos').value : '';
-		var loc = 'undefined' != typeof document.getElementById('loc').value ? document.getElementById('loc').value : '';
-		xhr.send(encodeURI('pos=' + pos + '&loc=' + loc));
+		var passwd = 'undefined' != typeof document.getElementById('passwd').value ? document.getElementById('passwd').value : '';
+		xhr.send(encodeURI('pos=' + pos + '&passwd=' + passwd));
 	}, false);
 }, false);
